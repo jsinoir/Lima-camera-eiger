@@ -534,14 +534,14 @@ const
 
 
 //-----------------------------------------------------------------------------
-/// Set the number of frames to be taken
+/// Set the number of sequences to be trigerred
 //-----------------------------------------------------------------------------
 void Camera::setNbSequences(int nb_sequences) ///< [in] number of frames to take
 {
     DEB_MEMBER_FUNCT();
     DEB_PARAM() << DEB_VAR1(nb_sequences);
 
-    if (0==m_nb_sequences)
+    if (0==nb_sequences)
     {
         HANDLE_EIGERERROR("video mode is not supported.");
     }
@@ -551,7 +551,7 @@ void Camera::setNbSequences(int nb_sequences) ///< [in] number of frames to take
 
 
 //-----------------------------------------------------------------------------
-/// Get the number of frames to be taken
+/// Get the number of sequences to be trigerred
 //-----------------------------------------------------------------------------
 void Camera::getNbSequences(int& nb_sequences) ///< [out] current number of frames to take
 {
