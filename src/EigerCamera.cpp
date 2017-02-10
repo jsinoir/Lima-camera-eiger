@@ -162,7 +162,7 @@ Camera::Camera(const std::string& detector_ip)	///< [in] Ip address of the detec
     setTrigMode(IntTrig);
 
     m_nb_frames = 1;
-
+    m_nb_sequences = 1;
 }
 
 
@@ -211,6 +211,7 @@ void Camera::prepareAcq()
       nb_frames = m_nb_frames,nb_trigger = 1;break;
     case IntTrigMult:
     case ExtTrigMult:
+      nb_frames = m_nb_frames,nb_trigger = m_nb_sequences;break;
     case ExtGate:
       nb_frames = 1,nb_trigger = m_nb_frames;break;
     default:
@@ -535,6 +536,35 @@ const
 //-----------------------------------------------------------------------------
 /// Set the number of frames to be taken
 //-----------------------------------------------------------------------------
+void Camera::setNbSequences(int nb_sequences) ///< [in] number of frames to take
+{
+    DEB_MEMBER_FUNCT();
+    DEB_PARAM() << DEB_VAR1(nb_sequences);
+
+    if (0==m_nb_sequences)
+    {
+        HANDLE_EIGERERROR("video mode is not supported.");
+    }
+
+    m_nb_sequences = nb_sequences;
+}
+
+
+//-----------------------------------------------------------------------------
+/// Get the number of frames to be taken
+//-----------------------------------------------------------------------------
+void Camera::getNbSequences(int& nb_sequences) ///< [out] current number of frames to take
+{
+  DEB_MEMBER_FUNCT();
+  nb_sequences = m_nb_sequences;
+  DEB_RETURN() << DEB_VAR1(nb_sequences);
+}
+
+
+
+//-----------------------------------------------------------------------------
+/// Set the number of frames to be taken
+//-----------------------------------------------------------------------------
 void Camera::setNbFrames(int nb_frames) ///< [in] number of frames to take
 {
     DEB_MEMBER_FUNCT();
@@ -558,6 +588,7 @@ void Camera::getNbFrames(int& nb_frames) ///< [out] current number of frames to 
   nb_frames = m_nb_frames;
   DEB_RETURN() << DEB_VAR1(nb_frames);
 }
+
 
 
 //-----------------------------------------------------------------------------

@@ -64,6 +64,10 @@ namespace Eiger
 
     void setNbFrames(int  nb_frames);
     void getNbFrames(int& nb_frames /Out/);
+
+    void setNbSequences(int  nb_sequences);
+    void getNbSequences(int& nb_sequences /Out/);
+
     void getNbHwAcquiredFrames(int &nb_acq_frames /Out/);
 
     bool isBinningAvailable();

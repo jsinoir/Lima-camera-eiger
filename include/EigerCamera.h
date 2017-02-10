@@ -100,6 +100,10 @@ namespace lima
 
 			void setNbFrames(int  nb_frames);
 			void getNbFrames(int& nb_frames);
+
+			void setNbSequences(int  nb_sequences);
+			void getNbSequences(int& nb_sequences);
+
 			void getNbHwAcquiredFrames(int &nb_acq_frames);
 
 			bool isBinningAvailable();
@@ -161,6 +165,7 @@ namespace lima
 			//-----------------------------------------------------------------------------
 			//- lima stuff
 			int                       m_nb_frames;
+			int 		 	  m_nb_sequences;
 			int                       m_image_number;
 			double                    m_latency_time;
 			TrigMode                  m_trig_mode;
